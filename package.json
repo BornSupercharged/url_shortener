@@ -1,0 +1,43 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "npm run development",
+    "development": "mix",
+    "watch": "mix watch",
+    "watch-poll": "mix watch -- --watch-options-poll=1000",
+    "hot": "mix watch --hot",
+    "prod": "npm run production",
+    "production": "mix --production"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.0",
+    "@types/datatables.net-buttons": "^1.4.7",
+    "autoprefixer": "^10.4.2",
+    "axios": "^0.25.0",
+    "laravel-mix": "^6.0.6",
+    "postcss": "^8.4.7",
+    "resolve-url-loader": "^5.0.0",
+    "tailwindcss": "^3.0.23",
+    "vue-loader": "^17.0.0"
+  },
+  "dependencies": {
+    "bootstrap": "^5.2.0",
+    "bootstrap-vue": "^2.22.0",
+    "bootstrap4": "0.0.1-security",
+    "datatables.net": "^1.12.1",
+    "datatables.net-buttons": "^2.2.3",
+    "datatables.net-buttons-bs5": "^2.2.3",
+    "datatables.net-buttons-dt": "^2.2.3",
+    "datatables.net-dt": "^1.12.1",
+    "jquery": "^3.6.0",
+    "js-cookie": "^3.0.1",
+    "jszip": "^3.10.0",
+    "jszip-utils": "^0.1.0",
+    "moment": "^2.29.4",
+    "pdfmake": "^0.2.5",
+    "vform": "^2.1.2",
+    "vue": "^3.2.31",
+    "vue-router": "^4.0.13",
+    "vuex": "^4.0.2"
+  }
+}
