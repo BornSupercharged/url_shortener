@@ -36,7 +36,14 @@ class UrlController extends Controller
       $data = $request->all();
       $user = Auth::user();
       $url = new Url();
-      $url->shortcode = \Str::random(2).time().$user->id;
+      if($request->user_shortcode) {
+        if(Url::where('shortcode',$request->user_shortcode)->count()) {
+          return response()->json(['error'=>'Shortcode already exists.'],200);
+        }
+        $url->shortcode = $request->user_shortcode;
+      } else {
+        $url->shortcode = \Str::random(6);
+      }
       $url->user_id=$user->id;
       $url->link=$request->link;
       $url->clicks=0;

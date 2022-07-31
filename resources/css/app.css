@@ -33,8 +33,14 @@
 .text-red-600 {
 	color:#721c24;
 }
+.w-50{
+	width: 50%;
+}
+.w-35{
+  width: 35%;
+}
 .w-80{
-	width: 80%;
+  width: 80%;
 }
 .w-90{
 	width: 90%;

@@ -19,5 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 // Route::post('/login', [LoginController::class, 'login']);
 Route::get('url/{code}', [SpaController::class, 'index']);
+Route::get('url/{code}/stats', [SpaController::class, 'stats']);
+Route::get('user/{id}', [SpaController::class, 'user_stats']);
 
 Route::get('{path}', SpaController::class)->where('path', '(.*)');
