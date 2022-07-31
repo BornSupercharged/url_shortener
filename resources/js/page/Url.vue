@@ -2,7 +2,7 @@
   <div class="container mx-auto">
     <div class="max-w-full border border-gray-300 rounded-sm bg-white">
       <div class="p-6">
-        <h5 class="text-lg font-medium">Url Shortener</h5>
+        <h5 class="text-lg font-medium">URL Shortener</h5>
         <form
           @submit.prevent="submitUrl"
         >
