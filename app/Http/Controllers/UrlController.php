@@ -8,7 +8,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Validator;
 class UrlController extends Controller
 {
   /**
@@ -29,11 +29,21 @@ class UrlController extends Controller
    * @param  \App\Http\Requests\StoreSubjectRequest  $request
    * @return \Illuminate\Http\Response
    */
-  public function store(StoreUrlRequest $request)
+  public function store(Request $request)
   {
     try {
 
       $data = $request->all();
+      $validator = Validator::make($request->all(), [
+           'link' => 'required|url',
+       ],[
+      'link.required' => 'The url field is required.',
+      'link.url' => 'The url is not valid. Url must start with https:// or http:// protocol.',
+    ]);
+        
+       if ($validator->fails()) {
+            return response()->json(['error'=>$validator->messages()->first()],200);
+       }
       $user = Auth::user();
       $url = new Url();
       if($request->user_shortcode) {
@@ -51,9 +61,8 @@ class UrlController extends Controller
 
       return response()->json($url, 200);
     } catch (\Exception $e) {
-      return throw ValidationException::withMessages([
-        'error' => $e->getMessage()
-      ]);
+        return response()->json(['error'=>$e->getMessage()], 200);
+     
     }
   }
   public function destroy(Request $request) {

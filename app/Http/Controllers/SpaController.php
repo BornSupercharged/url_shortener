@@ -43,7 +43,7 @@ class SpaController extends Controller
     	$result=Url::where('user_id',$id)->get();
     	$urls=array();
     	foreach ($result as $key => $value) {
-    		array_push($urls, ['shortcode'=>$value->shortcode,'clicks'=>$value->clicks,'last_access_timestamp'=>($value->last_access_timestamp)?date('Y-m-d H:i:s',strtotime($value->last_access_timestamp)):'','created_at'=>date('Y-m-d H:i:s',strtotime($value->created_at))]);
+    		array_push($urls, ['shortcode'=>$value->shortcode,'clicks'=>$value->clicks,'url'=>$value->link,'last_access_timestamp'=>($value->last_access_timestamp)?date('Y-m-d H:i:s',strtotime($value->last_access_timestamp)):'','created_at'=>date('Y-m-d H:i:s',strtotime($value->created_at))]);
     	}
     	return response()->json($urls, 200);
     }
