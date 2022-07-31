@@ -7,6 +7,7 @@ import checkAuth from "./middleware/check-auth";
 import Login from "@/page/Login";
 import Register from "@/page/Register";
 import Dashboard from "@/page/Dashboard";
+import Url from "@/page/Url";
 
 // The middleware for every page of the application.
 const globalMiddleware = [checkAuth];
@@ -44,6 +45,15 @@ const routes = [
     path: "/dashboard",
     name: "dashboard",
     component: Dashboard,
+    meta: {
+      middleware: [auth],
+      layout: "AppLayout",
+    },
+  },
+  {
+    path: "/url-shortner",
+    name: "url-shortner",
+    component: Url,
     meta: {
       middleware: [auth],
       layout: "AppLayout",

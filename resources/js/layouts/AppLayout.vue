@@ -33,7 +33,7 @@
                 class="nav-link"
                 active-class="bg-gray-100"
               >
-                Url Shortner
+                URL Shortener
               </router-link>
             </div>
             <div class="hidden xl:flex items-center">
