@@ -3,15 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use RedisClient\RedisClient;
+use RedisClient\Client\Version\RedisClient2x6;
+use RedisClient\ClientFactory;
 use App\Models\Url;
 use App\Models\User;
-use Illuminate\Support\Facades\Redis;
 
 class SpaController extends Controller
 {
-    /**
-     * Get the SPA view.
-     */
     public function __invoke()
     {
         return view('spa');
@@ -19,14 +18,23 @@ class SpaController extends Controller
 
     //redirect to url
     public function index($code) {
-    	$url=Url::where('shortcode',$code)->firstOrFail();
-    	$url->clicks=$url->clicks+1;
-    	$url->last_access_timestamp=date('Y-m-d H:i:s');
+    	$url = Url::where('shortcode',$code)->firstOrFail();
+    	$url->clicks = $url->clicks+1;
+    	$url->last_access_timestamp = date('Y-m-d H:i:s');
     	$url->save();
 
-    	/* TODO: Implement Redis caching */
-    	// Redis::set('url_' . $code, $url);
-
+    	if (env('REDIS_CLIENT') == 'predis') {    	    
+    	    $Redis = ClientFactory::create([
+    	        'server' => env('REDIS_HOST').':'.env('REDIS_PORT'),
+    	        'timeout' => 2,
+    	        'version' => '6.0'
+    	    ]);
+    	    
+    	    if ( !$Redis->get($code) ) {
+    	        // Add the Shortcode:URL key:pair to Redis
+    	        $Redis->set($code, $url->link); 
+    	    }
+    	}
 
     	return redirect()->to($url->link);
     }
