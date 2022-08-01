@@ -10,8 +10,10 @@ The application offers an easy user registration as well as simple login form to
 
 - **[Laravel](https://laravel.com)**
 - **[Vue JS](https://vuejs.org)**
+- **[MySQL](https://www.mysql.com)**
+- **[Redis](https://redis.io)**
 - **[Composer](https://getcomposer.org)**
-- **[NPM](https://www.npmjs.com/)**
+- **[NPM](https://www.npmjs.com)**
 
 ### Build
 ```
