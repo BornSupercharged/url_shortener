@@ -51,8 +51,8 @@ const routes = [
     },
   },
   {
-    path: "/url-shortner",
-    name: "url-shortner",
+    path: "/url-shortener",
+    name: "url-shortener",
     component: Url,
     meta: {
       middleware: [auth],

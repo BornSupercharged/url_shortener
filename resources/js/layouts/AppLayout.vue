@@ -29,7 +29,7 @@
                 Dashboard
               </router-link>
               <router-link
-                :to="{ name: 'url-shortner' }"
+                :to="{ name: 'url-shortener' }"
                 class="nav-link"
                 active-class="bg-gray-100"
               >
